@@ -1,6 +1,6 @@
 package reseau.couches;
 
-import java.util.HashMap;
+import java.util.*;
 import reseau.Message;
  
 import reseau.adresses.Adresse;
@@ -47,13 +47,13 @@ public abstract class Transport extends Couche {
     public void sendMessage(int portSource, Adresse dest, int portDest, Message message) {
       Message mes = this.getEntete(portSource, dest, portDest, message);
       mes.ajouter(message);
-      System.out.println("Je suis " + this.getNom() + " et j'envoie " + mes.size() + " octets : "  + mes+"\n");
+      System.out.println("Je suis " + this.getNom() + " et j'envoie " + mes.size() + " octets.");
       ((Reseau)moinsUn).sendMessage(dest, mes);
     }
  
     public void receiveMessage(Adresse source, Message message) {
     
-        System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets: " + message+"\n") ;
+        System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets.") ;
         Message m = new Message(message);
         int portSource = m.extraireEntier(0) ; // extraction du port source
         m.supprimer(2) ; // on supprime le port source
@@ -69,7 +69,8 @@ public abstract class Transport extends Couche {
         }
         else
         {
-            System.out.println("Problème sur le message, la somme de contrôle ne vaut pas 0.\n") ;
+            System.out.println("Problème sur le message, la somme de contrôle ne vaut pas 0.") ;
+            System.out.println("======================================================================================") ;
         }
     }
 

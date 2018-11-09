@@ -16,7 +16,7 @@ public class Ethernet extends Liaison {
     public void sendMessage(AdresseMac dest, Message message) {
         Message m = new Message(this.getEntete(dest, message)) ;
         m.ajouter(message) ;
-        System.out.println("Je suis " + this.getNom() + " et j'envoie " + m.size() + " octets : " + m+"\n") ;
+        System.out.println("Je suis " + this.getNom() + " et j'envoie " + m.size() + " octets.") ;
         this.resLoc.sendTrame(m) ;
     }
   
@@ -29,7 +29,7 @@ public class Ethernet extends Liaison {
         AdresseMac am = message.extraireAdresseMac() ;
         if (this.adrMac.toString().equals(am.toString()))
         {
-            System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets : " + message+"\n") ;
+            System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets.") ;
 
             // Une adresse mac est sur 6 octets donc on retire les 6*2 octets, dest et source
             message.supprimer(12) ;
@@ -37,7 +37,8 @@ public class Ethernet extends Liaison {
         }
         else
         {
-            System.out.println("Je suis " + this.getNom() + " et je reçois un message qui ne me concerne pas.\n") ;
+            System.out.println("Je suis " + this.getNom() + " et je reçois un message qui ne me concerne pas.") ;
+            System.out.println("======================================================================================") ;
         }
     }
 

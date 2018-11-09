@@ -26,7 +26,6 @@ public class ReseauLocal{
 	{
 		Liaison l = m.getCoucheLiaison() ;
 		link.add(l) ;
-		System.out.println("ajout");
 	}
 
 	public void sendTrame(Message trame)

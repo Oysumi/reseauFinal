@@ -78,18 +78,19 @@ public class IP extends Reseau {
       
       if ( destMasque.toString().equals(sourceMasque.toString()) )
       {
-            System.out.println("Je suis "+this.getNom() + " et j'envoie " + mes.size() +" octets: " + mes+"\n");
+            System.out.println("Je suis "+this.getNom() + " et j'envoie " + mes.size() +" octets.");
             ((Liaison)moinsUn).sendMessage(this.getAdresseMac(dest), mes);
       }
       else
       {
-            System.out.println("Les deux machines ne sont pas sur le même réseau.\n") ;
+            System.out.println("Les deux machines ne sont pas sur le même réseau.") ;
+            System.out.println("======================================================================================") ;
       }
     } 
   
     @Override
     public void receiveMessage(Message message) {
-       System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets: " + message+"\n") ;
+       System.out.println("Je suis " + this.getNom() + " et je reçois " + message.size() + " octets.") ;
        message.supprimer(5) ; // on retire l'entête jusqu'au protocole
        Adresse adrSource = message.extraireAdresse(4) ;
        message.supprimer(4) ;
@@ -97,12 +98,13 @@ public class IP extends Reseau {
        message.supprimer(4) ;
        if (this.adresseIP.toString().equals(adrDest.toString()))
        {
-            System.out.println("Je reçois un message qui m'est bien destiné.\n") ;
+            System.out.println("Je reçois un message qui m'est bien destiné.") ;
             ((Transport)plusUn).receiveMessage(adrSource, message) ;
        }
        else
        {
-            System.out.println("Je reçois un message qui ne m'est pas destiné.\n") ;
+            System.out.println("Je reçois un message qui ne m'est pas destiné.") ;
+            System.out.println("======================================================================================") ;
        }
     }  
 

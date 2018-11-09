@@ -6,11 +6,13 @@ import reseau.Machine;
 
 public class ServeurMaj extends Application {
     
+    protected Application client ;
+
     /**
      * @param port le port dans la couche transport
      */
-    public ServeurMaj(int port, Machine mach) {
-        super(port, mach);
+    public ServeurMaj(int port, Machine mach, Application clientDNS) {
+        super(port, mach, clientDNS);
     }
 
     /**
@@ -19,7 +21,8 @@ public class ServeurMaj extends Application {
      */
     @Override
     protected Message traiter(Message message) {
-        System.out.println("Je transforme la chaîne de caractère en majuscules...\n");
+        System.out.println("Je transforme la chaîne de caractère en majuscules...");
+        System.out.println("======================================================================================") ;
         /**
          * Pour passer de minuscule à majuscule en ascii, il suffit de soustraire 32 à chaque octet
          */

@@ -10,8 +10,8 @@ import reseau.Machine;
  */
 public class ClientNumerique extends Application {
 
-    public ClientNumerique(int port, Machine mach) {
-        super(port, mach) ;
+    public ClientNumerique(int port, Machine mach, Application dns) {
+        super(port, mach, dns) ;
     }
    
     /**
@@ -22,7 +22,8 @@ public class ClientNumerique extends Application {
      */
     @Override
     public void receiveMessage(Adresse source, int portSource, Message message) {
-        System.out.println("Je suis "+getNom()+" et je reçois "+message+"\n");
+        System.out.println("Je suis "+getNom()+" et je reçois "+message);
+        System.out.println("======================================================================================") ;
         resultat = message ;
     } 
 

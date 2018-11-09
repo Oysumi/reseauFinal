@@ -9,11 +9,13 @@ import reseau.Machine;
  */
 public class ServeurFoisDeux extends Application {
     
+    protected Application client ;
+
     /**
      * @param port le port dans la couche transport
      */
-    public ServeurFoisDeux(int port, Machine mach) {
-        super(port, mach);
+    public ServeurFoisDeux(int port, Machine mach, Application clientDNS) {
+        super(port, mach, clientDNS);
     }
 
     /**
@@ -22,7 +24,8 @@ public class ServeurFoisDeux extends Application {
      */
     @Override
     protected Message traiter(Message message) {
-        System.out.println("Je calcule * 2 ...\n");
+        System.out.println("Je calcule * 2 ...");
+        System.out.println("======================================================================================") ;
         int entier = message.extraireEntier(0) ;
         int res = entier * 2 ;
         return new Message(res);
